@@ -1,82 +1,116 @@
-# Product Inventory Management – Frontend Assignment
-
-## 📌 Overview
-
-This project is a product inventory management interface built using **React + TypeScript**.  
-It allows users to view, search, filter, sort, and paginate products, as well as add new products via a dedicated form.
-
-The application is designed with a **production-grade, scalable architecture**, focusing on clean separation of concerns, reusability, and maintainability.
-
+# Inventory Panel
+A simple inventory management panel built using **React + TypeScript**, focusing on clean architecture, state management, and real-world UI patterns.
 ---
-
-## 🧠 Approach & Architecture
-
-### Tech Stack
-- **React 18 + TypeScript**
-- **Vite** (development & build)
-- **Tailwind CSS** (styling & responsive UI)
-- **React Router** (routing)
-- **TanStack Query (React Query)** (data fetching & caching)
-- **Zustand** (client-side state for filters, sorting, pagination)
-- **react-hook-form + Zod** (form handling & validation)
-- **Material UI Icons** (table header interactions)
-
-### Architectural Decisions
-- **Feature-based folder structure** for scalability
-- **Routing isolated** in `src/app/router.tsx`
-- **State management minimized** and localized
-- **Client-side operations** (search, filter, sort, pagination) for simplicity
-- **UI interactions embedded in table headers** for better discoverability
-
+## 🚀 Tech Stack
+- React + TypeScript
+- Zustand (state management + persistence)
+- TanStack Router
+- TanStack React Query
+- React Hook Form + Zod
+- Tailwind CSS
+- DummyJSON (mock API)
 ---
-
-## ✨ Features Implemented
-
-### Product Listing (`/products`)
-- Search by product name (inline search icon in header)
-- Filter by category (dropdown in header)
-- Sort by price and stock (icon-based toggles)
-- Pagination
-- Responsive, clean table UI
-- Clear **Add Product** call-to-action
-
-### Add Product (`/products/new`)
-- Form with:
-  - Product name
-  - Category
-  - Price
-  - Stock
-  - Description
-- Schema-based validation using Zod
-- Modern, card-based UI layout
-
----
-
-## ⚙️ Setup Instructions
-
-### Prerequisites
+## ⚙️ Prerequisites
 - Node.js v18+
 - npm
-
-### Installation
+---
+## 🛠 Installation
 ```bash
-git clone <repository-url>
-cd <project-folder>
+git clone git@github.com:rathoredeveshbly/inventory-panel.git
+cd inventory-panel
 npm install
 npm run dev
-http://localhost:5173/products
 
+# Open in browser
+http://localhost:5173
+🧠 Overview of Approach
+Project Structure
+Followed a feature-based folder structure
 
-⏱ Time Taken
+All product-related logic lives under:
 
-Total: ~6–7 hours
+src/features/products
+State Management
 
-Architecture & setup: ~1.5 hrs
+Zustand is used for:
 
-Core features (listing, filters, sorting, pagination): ~2.5 hrs
+Search, filter, sort, pagination state
 
-UI polish & responsiveness: ~1.5 hrs
+Locally added products
 
-Add product form & validation: ~1 hr
+In-place stock edits
 
-Refactoring & cleanup: ~0.5 hr
+Zustand persist middleware stores data in localStorage, so:
+
+New products remain after refresh
+
+Edited stock values persist
+
+Data Fetching
+
+TanStack React Query fetches product data from DummyJSON
+
+API products are merged with:
+
+Locally added products
+
+Locally edited stock values
+
+Routing
+TanStack Router is used instead of react-router-dom
+
+Routes implemented:
+
+/products → Product listing
+
+/products/new → Add product form
+
+UI Features
+
+Product list with:
+
+Debounced search
+
+Category filter
+
+Sort by price / stock
+
+Pagination
+
+In-place editing of product stock from the table
+
+Product status indicator (In Stock / Out of Stock)
+
+Total: ~4 hours
+
+Project setup & architecture: ~1 hr
+Core features (listing, filters, sorting, pagination): ~1.5 hrs
+Add product form & validation: ~45 mins
+State persistence & in-place edit: ~30 mins
+Refactoring & cleanup: ~15 mins
+
+⚠️ Known Limitations
+
+DummyJSON API does not persist data
+
+New products and stock edits are stored only in localStorage
+
+No authentication or authorization
+
+Pagination is handled on the client side
+
+No backend integration for updates
+
+🛠 TODO / Possible Improvements
+
+Sync filters and pagination with URL query params
+
+Add delete product functionality
+
+Add optimistic updates when backend is available
+
+Improve accessibility (ARIA roles, keyboard navigation)
+
+Add unit and integration tests
+
+Deploy application (Vercel / Netlify)
