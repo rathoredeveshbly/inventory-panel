@@ -1,20 +1,30 @@
 # Inventory Panel
+
 A simple inventory management panel built using **React + TypeScript**, focusing on clean architecture, state management, and real-world UI patterns.
+
 ---
+
 ## 🚀 Tech Stack
-- React + TypeScript
-- Zustand (state management + persistence)
-- TanStack Router
-- TanStack React Query
-- React Hook Form + Zod
-- Tailwind CSS
-- DummyJSON (mock API)
+
+* React + TypeScript
+* Zustand (state management + persistence)
+* TanStack Router
+* TanStack React Query
+* React Hook Form + Zod
+* Tailwind CSS
+* DummyJSON (mock API)
+
 ---
+
 ## ⚙️ Prerequisites
-- Node.js v18+
-- npm
+
+* Node.js v18+
+* npm
+
 ---
+
 ## 🛠 Installation
+
 ```bash
 git clone git@github.com:rathoredeveshbly/inventory-panel.git
 cd inventory-panel
@@ -23,64 +33,65 @@ npm run dev
 
 # Open in browser
 http://localhost:5173
-🧠 Overview of Approach
-Project Structure
-Followed a feature-based folder structure
+```
 
-All product-related logic lives under:
+---
 
-src/features/products
-State Management
+## 🧠 Overview of Approach
 
-Zustand is used for:
+### Project Structure
 
-Search, filter, sort, pagination state
+* Followed a **feature-based folder structure**
+* All product-related logic lives under:
 
-Locally added products
+  ```
+  src/features/products
+  ```
 
-In-place stock edits
+### State Management
 
-Zustand persist middleware stores data in localStorage, so:
+* **Zustand** is used for:
 
-New products remain after refresh
+  * Search, filter, sort, pagination state
+  * Locally added products
+  * In-place stock edits
+* Zustand `persist` middleware stores data in **localStorage**, so:
 
-Edited stock values persist
+  * New products remain after refresh
+  * Edited stock values persist
 
-Data Fetching
+### Data Fetching
 
-TanStack React Query fetches product data from DummyJSON
+* **TanStack React Query** fetches product data from DummyJSON
+* API products are merged with:
 
-API products are merged with:
+  * Locally added products
+  * Locally edited stock values
 
-Locally added products
+### Routing
 
-Locally edited stock values
+* **TanStack Router** is used instead of `react-router-dom`
+* Routes implemented:
 
-Routing
-TanStack Router is used instead of react-router-dom
+  * `/products` → Product listing
+  * `/products/new` → Add product form
 
-Routes implemented:
+### UI Features
 
-/products → Product listing
+* Product list with:
 
-/products/new → Add product form
+  * Debounced search
+  * Category filter
+  * Sort by price / stock
+  * Pagination
+* **In-place editing** of product stock from the table
+* Product status indicator (In Stock / Out of Stock)
 
-UI Features
+---
 
-Product list with:
+## ⏱ Time Taken
 
-Debounced search
-
-Category filter
-
-Sort by price / stock
-
-Pagination
-
-In-place editing of product stock from the table
-
-Product status indicator (In Stock / Out of Stock)
-
+```text
 Total: ~4 hours
 
 Project setup & architecture: ~1 hr
@@ -88,29 +99,32 @@ Core features (listing, filters, sorting, pagination): ~1.5 hrs
 Add product form & validation: ~45 mins
 State persistence & in-place edit: ~30 mins
 Refactoring & cleanup: ~15 mins
+```
 
-⚠️ Known Limitations
+---
 
-DummyJSON API does not persist data
+## ⚠️ Known Limitations
 
-New products and stock edits are stored only in localStorage
+* DummyJSON API does **not persist data**
 
-No authentication or authorization
+* New products and stock edits are stored only in localStorage
+* No authentication or authorization
+* Pagination is handled on the client side
+* No backend integration for updates
 
-Pagination is handled on the client side
+---
 
-No backend integration for updates
+## 🛠 TODO / Possible Improvements
 
-🛠 TODO / Possible Improvements
+* Sync filters and pagination with URL query params
+* Add delete product functionality
+* Add optimistic updates when backend is available
+* Improve accessibility (ARIA roles, keyboard navigation)
+* Add unit and integration tests
+* Deploy application (Vercel / Netlify)
 
-Sync filters and pagination with URL query params
+---
 
-Add delete product functionality
+## 📌 Notes
 
-Add optimistic updates when backend is available
-
-Improve accessibility (ARIA roles, keyboard navigation)
-
-Add unit and integration tests
-
-Deploy application (Vercel / Netlify)
+This project focuses on frontend architecture, state management, and UX best practices, keeping the implementation simple, readable, and scalable.
